@@ -124,7 +124,7 @@ input, select, textarea {
 
 	b, strong {
 		font-weight: 600;
-		color: #3e3e3e;
+		color: #FFFFFF;
 	}
 
 	i, em {
@@ -150,7 +150,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #3e3e3e;
+		color: #FFFFFF;
 		margin: 0 0 0.75em 0;
 	}
 
@@ -1995,12 +1995,12 @@ input, select, textarea {
 
 		.wrapper.style1 {
 			background-image: none;
-			background-color: #fff;
+			background-color: #FFFFFF;
 		}
 
 		.wrapper.style2 {
 			background-color: #fafafa;
-			text-shadow: 1px 1px 0px #fff;
+			text-shadow: 1px 1px 0px #FFFFFF;
 		}
 
 		.wrapper.style3 {
@@ -2443,3 +2443,7 @@ input, select, textarea {
 					}
 
 	}
+
+	.background-color-article {
+		background-color: #09090B; /* You can use any color code or name here */
+	  }
