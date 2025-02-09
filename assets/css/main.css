@@ -44,24 +44,44 @@ footer, header, hgroup, menu, nav, section {
     transform: translateX(0);
   }
 }
-/* Ensure images are positioned correctly in a circle */
-.container {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    margin: auto;
-}
 
-.image-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+
+.container-animation {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh; /* Full screen height */
 }
 
-/* Set positions for images in a circle */
+.left {
+    width: 50%; /* Left side takes up half */
+    padding: 20px;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+@media (min-width: 768px) {
+    .left {
+        width: 40%; /* 40% width on medium and larger screens */
+        text-align: left; /* Align text to the left */
+    }
+}
+
+/* Right Section: Animation */
+.right {
+    width: 50%; /* Right side takes up half */
+    position: relative;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .right {
+        width: 55%; /* 55% width on medium and larger screens */
+        height: 500px; /* Adjust height on larger screens */
+    }
+}
+
+/* Ensure the images are correctly positioned and rotating */
 .image-item {
     position: absolute;
     width: 120px;
@@ -71,35 +91,38 @@ footer, header, hgroup, menu, nav, section {
     transition: opacity 1s ease, transform 2s ease;
 }
 
-/* Final image */
-.final-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-    height: 250px;
-    opacity: 0;
-    transition: opacity 1s ease;
+#final-image {
+    max-width: 100%; /* Ensure final image is responsive */
+    height: auto;
 }
 
-/* Define the animation to rotate images in a circle */
-@keyframes rotateCircle {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* Style for the wave emoji */
+.wave-emoji {
+    font-size: 2rem;
+    margin-left: 10px;
 }
 
-/* Make images rotate in a circle */
-.rotate {
-    animation: rotateCircle 10s linear infinite;
-}
+/* Responsive styling for small screens */
+@media (max-width: 767px) {
+    .container-animation {
+        flex-direction: column; /* Stack left and right sections vertically */
+        padding: 20px;
+    }
 
-.animate {
-    opacity: 1;
-}
+    .left {
+        font-size: 1rem; /* Reduce text size on small screens */
+        text-align: center;
+    }
 
-.fade-in {
-    opacity: 1 !important;
+    .right {
+        width: 100%; /* Full width on small screens */
+        height: 250px; /* Smaller height on small screens */
+    }
+
+    .image-item {
+        width: 80px; /* Adjust image size for small screens */
+        height: 80px;
+    }
 }
 
 body {
@@ -200,7 +223,7 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	 h3, h4, h5, h6 {
 		color: #FFFFFF;
 		margin: 0 0 0.75em 0;
 	}

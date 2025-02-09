@@ -1,78 +1,58 @@
-/*
-    Miniport by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function($) {
+    function startAnimation() {
+        const images = $('.image-item');
+        const numImages = images.length;
+        const duration = 12000; // Slower rotation
+        const spacing = (2 * Math.PI) / numImages;
 
-    var $window = $(window),
-        $body = $('body'),
-        $nav = $('#nav');
+        $('#final-image').css({ opacity: 0 });
 
-    // Breakpoints.
-    breakpoints({
-        xlarge: ['1281px', '1680px'],
-        large: ['981px', '1280px'],
-        medium: ['737px', '980px'],
-        small: [null, '736px']
-    });
+        function animateImages() {
+            const containerWidth = $('#animation-container').width();
+            const containerHeight = $('#animation-container').height();
+            const centerX = containerWidth * 0.75; // 75% of the container width to position it in the right half
+            const centerY = containerHeight / 2; // Vertically center the animation
+            const radius = Math.min(containerWidth, containerHeight) / 4; // Adjust radius to fit in the right half
 
-    // Play initial animations on page load.
-    $window.on('load', function() {
-        window.setTimeout(function() {
-            $body.removeClass('is-preload');
-        }, 100);
-    });
+            images.each(function(index) {
+                const image = $(this);
+                image.css({ left: centerX - 50, top: centerY - 50, opacity: 1 });
 
-    // Scrolly.
-    $('#nav a, .scrolly').scrolly({
-        speed: 1000,
-        offset: function() { return $nav.height(); }
-    });
+                setTimeout(function() {
+                    const startAngle = index * spacing;
 
-    // On page load, initialize the animations
-    $(document).ready(function() {
-        // Step 1: Fade in the images one by one at specific positions
-        setTimeout(function() {
-            $('#coding').addClass('animate');
-        }, 1000);
-
-        setTimeout(function() {
-            $('#family').addClass('animate');
-        }, 2000);
-
-        setTimeout(function() {
-            $('#friends').addClass('animate');
-        }, 3000);
-
-        setTimeout(function() {
-            $('#singing').addClass('animate');
-        }, 4000);
-
-        setTimeout(function() {
-            $('#drawing').addClass('animate');
-        }, 5000);
-
-        // Step 2: After images are visible, start rotating them in a circle
-        setTimeout(function() {
-            $('.image-item').addClass('rotate');
-        }, 6000);
-
-        // Step 3: After rotation, animate the images to the center to form the final image
-        setTimeout(function() {
-            $('.image-item').each(function(index) {
-                $(this).animate({
-                    left: '50%',
-                    top: '50%',
-                    marginLeft: '-60px', // Adjust to center the images
-                    marginTop: '-60px'
-                }, 2000 + index * 1000);
+                    $({ angle: startAngle }).animate({ angle: startAngle + (2 * Math.PI) }, {
+                        duration: duration,
+                        step: function(now) {
+                            const x = centerX + radius * Math.cos(now);
+                            const y = centerY + radius * Math.sin(now);
+                            image.css({ left: x + 'px', top: y + 'px' });
+                        },
+                        easing: 'linear',
+                        complete: function() {
+                            image.animate({
+                                left: centerX + 'px',
+                                top: centerY + 'px',
+                                width: '120px',
+                                height: '120px',
+                                opacity: 0
+                            }, 2000);
+                        }
+                    });
+                }, index * 500);
             });
+        }
 
-            // Step 4: After images converge, fade in the final image
-            $('#final-image').addClass('fade-in');
-        }, 10000);
+        // Initial animation start
+        animateImages();
+
+        // Recalculate on window resize to ensure animation stays within bounds
+        $(window).resize(function() {
+            animateImages();
+        });
+    }
+
+    $(document).ready(function() {
+        startAnimation();
     });
-
 })(jQuery);
