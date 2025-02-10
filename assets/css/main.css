@@ -28,102 +28,51 @@ section, summary, time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
-.wave-emoji {
-  display: inline-block;
-  animation: waveMovement 1.5s ease-in-out infinite;
-}
-
-@keyframes waveMovement {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+	.wave-emoji {
+		display: inline-block;
+		animation: waveAnimation 1.5s ease-in-out infinite;
+		transform-origin: 70% 70%; /* Adjust the pivot point */
+	  }
+	
+	  @keyframes waveAnimation {
+		0% { transform: rotate(0deg); }
+		25% { transform: rotate(15deg); }
+		50% { transform: rotate(0deg); }
+		75% { transform: rotate(15deg); }
+		100% { transform: rotate(0deg); }
+	  }
 
 
-.container-animation {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100vh; /* Full screen height */
-}
-
-.left {
-    width: 50%; /* Left side takes up half */
-    padding: 20px;
-    color: #FFFFFF;
-    font-size: 24px;
-}
-
-@media (min-width: 768px) {
-    .left {
-        width: 40%; /* 40% width on medium and larger screens */
-        text-align: left; /* Align text to the left */
-    }
-}
-
-/* Right Section: Animation */
-.right {
-    width: 50%; /* Right side takes up half */
+#animation-container {
     position: relative;
-    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Prevent images from overflowing outside */
 }
 
-@media (min-width: 768px) {
-    .right {
-        width: 55%; /* 55% width on medium and larger screens */
-        height: 500px; /* Adjust height on larger screens */
-    }
-}
-
-/* Ensure the images are correctly positioned and rotating */
 .image-item {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 100px; /* Default size */
+    height: 100px;
     border-radius: 50%;
-    opacity: 0;
     transition: opacity 1s ease, transform 2s ease;
 }
 
-#final-image {
-    max-width: 100%; /* Ensure final image is responsive */
-    height: auto;
-}
-
-/* Style for the wave emoji */
-.wave-emoji {
-    font-size: 2rem;
-    margin-left: 10px;
-}
-
-/* Responsive styling for small screens */
-@media (max-width: 767px) {
-    .container-animation {
-        flex-direction: column; /* Stack left and right sections vertically */
-        padding: 20px;
-    }
-
-    .left {
-        font-size: 1rem; /* Reduce text size on small screens */
-        text-align: center;
-    }
-
-    .right {
-        width: 100%; /* Full width on small screens */
-        height: 250px; /* Smaller height on small screens */
-    }
-
+/* Responsive Image Sizing */
+@media (max-width: 768px) {
     .image-item {
-        width: 80px; /* Adjust image size for small screens */
+        width: 80px;
         height: 80px;
     }
 }
+
+@media (max-width: 480px) {
+    .image-item {
+        width: 60px;
+        height: 60px;
+    }
+}
+
 
 body {
 	-webkit-text-size-adjust: none;
@@ -223,7 +172,7 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	 h3, h4, h5, h6 {
+	  h4, h5, h6 {
 		color: #FFFFFF;
 		margin: 0 0 0.75em 0;
 	}
@@ -1880,7 +1829,7 @@ input, select, textarea {
 					transition: background-color .2s ease-in-out;
 					background-color: #444;
 					border-radius: 6px;
-					box-shadow: inset 0px 0px 0px 1px #282828, inset 0px 2px 1px 0px rgba(255, 255, 255, 0.1);
+					/*box-shadow: inset 0px 0px 0px 1px #282828, inset 0px 2px 1px 0px rgba(255, 255, 255, 0.1); */
 					color: #2E2E2E !important;
 					display: block;
 					font-size: 26px;
@@ -2384,23 +2333,55 @@ input, select, textarea {
 					letter-spacing: 0;
 				}
 
-		/* Social */
+/* Social (Keep icons as is) */
+ul.social {
+    padding: 1em 0.5em 0 0.5em;
+}
 
-			ul.social {
-				padding: 1em 0.5em 0 0.5em;
-			}
+ul.social li {
+    margin: 0.5em 0.5em 0.5em 0.5em;
+}
 
-				ul.social li {
-					margin: 0.5em 0.5em 0.5em 0.5em;
-				}
+ul.social li a {
+    text-decoration: none;
+    color: #000;  /* Adjust text color */
+    font-size: 16px;  /* Adjust text size */
+}
 
-					ul.social li a {
-						top: 0 !important;
-					}
+ul.social li a:hover {
+    color: #EA8A95;  /* Example hover color */
+}
 
-						ul.social li a:before {
-							background-color: transparent !important;
-						}
+/* Skills Buttons */
+ul.skills {
+    padding: 1em 0.5em 0 0.5em;
+    list-style-type: none;  /* Remove list bullets */
+    display: flex;  /* Align buttons next to each other */
+    flex-wrap: wrap;  /* Allow wrapping to next line if needed */
+    gap: 10px;  /* Add space between buttons */
+}
+
+ul.skills li {
+    margin: 0;
+}
+
+.skillsdesign {
+    text-decoration: none;
+    color: #000;  /* Text color */
+    font-size: 16px;  /* Font size */
+    padding: 10px 20px;
+    border: 2px solid #ccc;  /* Border around the button */
+    border-radius: 5px;  /* Rounded corners */
+    background-color: #fff;  /* Button background */
+    cursor: pointer;  /* Pointer cursor */
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
+}
+
+.skillsdesign:hover {
+    color: white;  /* Change text color on hover */
+    background-color: #EA8A95;  /* Button background color on hover */
+}
+
 
 		/* Actions */
 

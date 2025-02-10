@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Miniport by HTML5 UP</title>
+		<title>Portfolio by Clair Mutebi</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -16,47 +16,76 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul class="container">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="#AboutMe">About me</a></li>
-				<li><a href="projects.html">Projects</a></li>
+				<li><a href="#home">Home</a></li>
+				<li><a href="#aboutme">About Me</a></li>
+				<li><a href="#portfolio">Portfolio</a></li>
+				<li><a href="#Skills">Skills</a></li>
 				<li><a href="#contact">Contact</a></li>
 			</ul>
 		</nav>
+		<!-- Home -->
 
 		<!-- Home -->
-		<!-- Home -->
-<article id="top" class="wrapper style1" style="background-color: #09090B">
-    <div class="container">
-        <div class="row">
-            <div class="col-4 col-5-large col-12-medium">
-                <span class="image fit"><img src="images/clair.JPG" alt="" /></span>
-            </div>
-            <div class="col-8 col-7-large col-12-medium" style="color: #FFFFFF;">
-                <header>
-                    <h1>Hi, I'm <strong>Clair </strong>.<span class="wave-emoji">👋🏿</span> </h1> 
-                </header>
-                <p>Welcome to my <strong>Portfolio</strong>. This site showcases my passion for <strong>UX/UI</strong>, <strong>development</strong> and <strong>data analysis</strong>.</p>
-                <a href="#work" class="button large scrolly">Learn about what I do</a>
-            </div>
-        </div>
-    </div>
-</article>
+		<article id="home" class="wrapper style1" style="background-color: #09090B">
+			<div class="container">
+				<div class="row">
+					<div class="col-4 col-5-large col-12-medium">
+						<span class="image fit">
+							<img src="images/clair.JPG" alt="" style="border-radius: 50%; width: 100%; height: auto; object-fit: cover;" />
+						</span>
+					</div>
+					<div class="col-8 col-7-large col-12-medium" style="color: #FFFFFF;">
+						<header>
+							<h1>Hi, I'm <strong>Clair </strong>.<span class="wave-emoji" style="display: inline-block; animation: waveAnimation 1.5s ease-in-out infinite; transform-origin: 70% 70%;">👋🏿</span></h1> 
+						</header>
+						<p>Welcome to my <strong>Portfolio</strong>. This site showcases my passion for <strong>UX/UI</strong>, <strong>development</strong> and <strong>data analysis</strong>.</p>
+						<a href="#portfolio" class="button large scrolly">Learn about what I do</a>
+					</div>
+				</div>
+			</div>
+		</article>
+		
 
 <!-- Work -->
-<div class="container-animation">
-    <!-- Left side for "ABOUT ME" -->
-    <div class="left">
+
+<article>
+	<div class="row">
+		<div class="col-4 col-6-medium col-12-small">
+			<article class="box style2">
+				<h3><a href="/projects/anxicare.html">AnxiCare</a></h3>
+				<p>AnxiCare, an apple watch app to detect and vizualise anxiety in children at emergency care</p>
+			</article>
+		</div>
+		<div class="col-4 col-6-medium col-12-small">
+			<article class="box style2">
+				<a href="#" class="image featured"><img src="images/gutsense.png" alt="" /></a>
+				<h3><a href="#">GutSense</a></h3>
+				<p>Personal data informatic, an app to understand what your bloating stems from. </p>
+			</article>
+		</div>
+		<div class="col-4 col-6-medium col-12-small">
+			<article class="box style2">
+				<a href="#" class="image featured"><img src="images/confidence2.png" alt="" /></a>
+				<h3><a href="#">Experiment in Cognitive Science</a></h3>
+				<p>The Impact of Time Pressure on Problem-Solving
+					Accuracy and Confidence</p>
+			</article>
+		</div>
+</article>
+<!--
+<div id="aboutme" class="container-animation">
+ Left side for "ABOUT ME"
+    <div class="left" style="color: black;">
         ABOUT ME
     </div>
 
-    <!-- Right side for animation -->
+    Right side for animation 
     <div class="right" id="animation-container">
         <img class="image-item" src="images/singing.jpg" alt="Image 1">
         <img class="image-item" src="images/presenting.jpg" alt="Image 2">
         <img class="image-item" src="images/pic00.jpg" alt="Image 3">
         <img class="image-item" src="images/pic01.jpg" alt="Image 4">
-    </div>
-</div>
+    </div> -->
 
 
 		<!-- Portfolio -->
@@ -64,13 +93,12 @@
 				<div class="container">
 					<header>
 						<h2>Here’s some stuff I made recently.</h2>
-						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
 					</header>
 					<div class="row">
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/anxicare.png" alt="" /></a>
-								<h3><a href="#">AnxiCare</a></h3>
+								<a href="/projects/anxicare.html" class="image featured"><img src="images/anxicare.png" alt="" /></a>
+								<h3><a href="/projects/anxicare.html">AnxiCare</a></h3>
 								<p>AnxiCare, an apple watch app to detect and vizualise anxiety in children at emergency care</p>
 							</article>
 						</div>
@@ -78,21 +106,22 @@
 							<article class="box style2">
 								<a href="#" class="image featured"><img src="images/gutsense.png" alt="" /></a>
 								<h3><a href="#">GutSense</a></h3>
-								<p>Personal data informatic, an app to understand what your bloating stems from. With data analysis</p>
+								<p>Personal data informatic, an app to understand what your bloating stems from. </p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								<h3><a href="#">Lorem ipsum</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<a href="#" class="image featured"><img src="images/confidence2.png" alt="" /></a>
+								<h3><a href="#">Experiment in Cognitive Science</a></h3>
+								<p>The Impact of Time Pressure on Problem-Solving
+									Accuracy and Confidence</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-								<h3><a href="#">Tempus dolore</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<a href="#" class="image featured"><img src="images/co-creation.png" alt="" /></a>
+								<h3><a href="#">Co-creation</a></h3>
+								<p>Playbook on how to facilitate </p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
@@ -116,6 +145,49 @@
 					</footer>
 				</div>
 			</article>
+			
+<article id="Skills" class="wrapper style2">
+	<div class="container">
+
+		
+		<header>
+			<h2>Skills</h2>
+		</header>
+		<h3>UX/UI</h3>
+		<ul class="skills">
+			<ul class="skills">
+				<li><button class="skillsdesign" type="button">Figma</button></li>
+				<li><button class="skillsdesign" type="button">Design System</button></li>
+				<li><button class="skillsdesign" type="button">Double Diamond Model</button></li>
+				<li><button class="skillsdesign" type="button">User Research Methods</button></li>
+				<li><button class="skillsdesign" type="button">User Evaluation</button></li>
+				<li><button class="skillsdesign" type="button">Prototyping</button></li>
+				<li><button class="skillsdesign" type="button">Wireframe</button></li>
+			</ul>
+		</ul>
+			<h3>Development</h3>
+			<ul class="skills">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+				<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+			</ul>
+			<h3>Marketing</h3>
+			<ul class="skills">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+				<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+			</ul>
+
+
+</article>
 
 		<!-- Contact -->
 			<article id="contact" class="wrapper style4">

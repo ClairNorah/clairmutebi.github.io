@@ -1,58 +1,54 @@
-(function($) {
+(function ($) {
     function startAnimation() {
         const images = $('.image-item');
         const numImages = images.length;
         const duration = 12000; // Slower rotation
         const spacing = (2 * Math.PI) / numImages;
 
-        $('#final-image').css({ opacity: 0 });
-
         function animateImages() {
-            const containerWidth = $('#animation-container').width();
-            const containerHeight = $('#animation-container').height();
-            const centerX = containerWidth * 0.75; // 75% of the container width to position it in the right half
-            const centerY = containerHeight / 2; // Vertically center the animation
-            const radius = Math.min(containerWidth, containerHeight) / 4; // Adjust radius to fit in the right half
+            const container = $('#animation-container');
+            const containerWidth = container.width();
+            const containerHeight = container.height();
+            const centerX = containerWidth / 2; // Center the images inside the container
+            const centerY = containerHeight / 2;
+            const radius = Math.min(containerWidth, containerHeight) / 3; // Ensure it stays inside
 
-            images.each(function(index) {
+            images.each(function (index) {
                 const image = $(this);
-                image.css({ left: centerX - 50, top: centerY - 50, opacity: 1 });
+                image.css({ opacity: 1 });
 
-                setTimeout(function() {
-                    const startAngle = index * spacing;
-
+                function rotateImage(startAngle) {
                     $({ angle: startAngle }).animate({ angle: startAngle + (2 * Math.PI) }, {
                         duration: duration,
-                        step: function(now) {
-                            const x = centerX + radius * Math.cos(now);
-                            const y = centerY + radius * Math.sin(now);
+                        step: function (now) {
+                            const x = centerX + radius * Math.cos(now) - image.width() / 2;
+                            const y = centerY + radius * Math.sin(now) - image.height() / 2;
                             image.css({ left: x + 'px', top: y + 'px' });
                         },
                         easing: 'linear',
-                        complete: function() {
-                            image.animate({
-                                left: centerX + 'px',
-                                top: centerY + 'px',
-                                width: '120px',
-                                height: '120px',
-                                opacity: 0
-                            }, 2000);
+                        complete: function () {
+                            rotateImage(startAngle); // Restart animation continuously
                         }
                     });
+                }
+
+                setTimeout(() => {
+                    rotateImage(index * spacing);
                 }, index * 500);
             });
         }
 
-        // Initial animation start
+        // Run animation on load
         animateImages();
 
-        // Recalculate on window resize to ensure animation stays within bounds
-        $(window).resize(function() {
-            animateImages();
+        // Ensure animation adjusts when resizing the window
+        $(window).resize(function () {
+            images.stop(true); // Stop ongoing animations
+            animateImages(); // Restart with new sizes
         });
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         startAnimation();
     });
 })(jQuery);
