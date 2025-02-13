@@ -2399,6 +2399,20 @@ ul.skills li {
 					}
 
 		/* Box */
+/* Box Styling */
+.box {
+    padding: 30px 20px;
+    margin: 0 0 20px 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensures all boxes have the same height */
+    min-height: 400px; /* Adjust this as needed */
+}
+
+.box h3 {
+    margin-bottom: 0.25em;
+}
 
 			.box {
 				padding: 30px 20px 30px 20px;
