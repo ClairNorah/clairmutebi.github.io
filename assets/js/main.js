@@ -1,54 +1,34 @@
-(function ($) {
-    function startAnimation() {
-        const images = $('.image-item');
-        const numImages = images.length;
-        const duration = 12000; // Slower rotation
-        const spacing = (2 * Math.PI) / numImages;
+/*
+	Miniport by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
 
-        function animateImages() {
-            const container = $('#animation-container');
-            const containerWidth = container.width();
-            const containerHeight = container.height();
-            const centerX = containerWidth / 2; // Center the images inside the container
-            const centerY = containerHeight / 2;
-            const radius = Math.min(containerWidth, containerHeight) / 3; // Ensure it stays inside
+(function($) {
 
-            images.each(function (index) {
-                const image = $(this);
-                image.css({ opacity: 1 });
+	var	$window = $(window),
+		$body = $('body'),
+		$nav = $('#nav');
 
-                function rotateImage(startAngle) {
-                    $({ angle: startAngle }).animate({ angle: startAngle + (2 * Math.PI) }, {
-                        duration: duration,
-                        step: function (now) {
-                            const x = centerX + radius * Math.cos(now) - image.width() / 2;
-                            const y = centerY + radius * Math.sin(now) - image.height() / 2;
-                            image.css({ left: x + 'px', top: y + 'px' });
-                        },
-                        easing: 'linear',
-                        complete: function () {
-                            rotateImage(startAngle); // Restart animation continuously
-                        }
-                    });
-                }
+	// Breakpoints.
+		breakpoints({
+			xlarge:  [ '1281px',  '1680px' ],
+			large:   [ '981px',   '1280px' ],
+			medium:  [ '737px',   '980px'  ],
+			small:   [ null,      '736px'  ]
+		});
 
-                setTimeout(() => {
-                    rotateImage(index * spacing);
-                }, index * 500);
-            });
-        }
+	// Play initial animations on page load.
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-        // Run animation on load
-        animateImages();
+	// Scrolly.
+		$('#nav a, .scrolly').scrolly({
+			speed: 1000,
+			offset: function() { return $nav.height(); }
+		});
 
-        // Ensure animation adjusts when resizing the window
-        $(window).resize(function () {
-            images.stop(true); // Stop ongoing animations
-            animateImages(); // Restart with new sizes
-        });
-    }
-
-    $(document).ready(function () {
-        startAnimation();
-    });
 })(jQuery);
