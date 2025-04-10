@@ -68,6 +68,11 @@ body {
 	  }
   }
 
+  .no-click {
+    pointer-events: none; /* Prevent clicking */
+    cursor: default; /* Change cursor to normal */
+}
+
   .aboutMe-emoji {
 	display: inline-block;
 	animation: waveAnimation 2.5s ease-in-out infinite;
